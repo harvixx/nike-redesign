@@ -1,0 +1,326 @@
+/* ========================================
+   HERO
+======================================== */
+
+/* background colors animate ho sakein isliye registered properties */
+@property --bg-1 {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #252525;
+}
+@property --bg-2 {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #1c1c1c;
+}
+@property --bg-3 {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #131313;
+}
+@property --bg-4 {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #0d0d0d;
+}
+
+.hero {
+  --bg-1: #252525;
+  --bg-2: #1c1c1c;
+  --bg-3: #131313;
+  --bg-4: #0d0d0d;
+
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 560px;
+  overflow: hidden;
+  cursor: pointer;
+  background: radial-gradient(
+    ellipse 55% 65% at 50% 47%,
+    var(--bg-1) 0%,
+    var(--bg-2) 35%,
+    var(--bg-3) 68%,
+    var(--bg-4) 100%
+  );
+  color: #fff;
+}
+
+/* ---------- Background logos ---------- */
+
+.background_logo {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  user-select: none;
+  z-index: 1;
+}
+
+.background_logo__img {
+  position: absolute;
+  display: block;
+  height: auto;
+  opacity: 0.1;
+  pointer-events: none;
+  user-select: none;
+}
+
+.background_logo__img--small {
+  top: 25%;
+  left: 58%;
+  width: min(38vw, 800px);
+  transform: translate(-50%, -50%);
+}
+
+.background_logo__img--medium {
+  top: 38%;
+  left: 55%;
+  width: min(62vw, 1100px);
+  transform: translate(-50%, -50%);
+}
+
+.background_logo__img--large {
+  top: 56%;
+  left: 50%;
+  width: min(86vw, 1400px);
+  transform: translate(-50%, -50%);
+}
+
+/* ---------- Shoe + Shadow wrapper ---------- */
+
+.hero__float {
+  position: fixed;     
+  inset: 0;
+  z-index: 50;
+  pointer-events: none;
+}
+
+/* ---------- Floor shadow ---------- */
+
+.hero__shadow {
+  /* intro animation in dono variables ko animate karti hai */
+  --floor-scale: 1;
+  --floor-rot: -5;
+
+  position: absolute;
+   left: 2vw;      
+  top: 35vh;      
+  z-index: 0;
+  width: min(73vw, 800px);
+  height: 67px;
+  transform: translate(-50%, -50%) rotate(calc(var(--floor-rot) * 1deg)) scale(var(--floor-scale));
+  border-radius: 50%;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(0, 0, 0, 0.6) 0%,
+    rgba(0, 0, 0, 0.32) 45%,
+    rgba(0, 0, 0, 0) 72%
+  );
+}
+
+/* ---------- Shoes ---------- */
+
+/* sirf ek anchor point (center ke paas), jooton ki position GSAP sambhalta hai */
+.shoes_container {
+  position: absolute;
+  left: 48%;
+  top: 45%;
+  width: 0;
+  height: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.shoe {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: block;
+  width: min(65vw, 95vh);
+  max-width: none;
+  height: auto;
+  filter: drop-shadow(0 30px 30px rgba(0, 0, 0, 0.55));
+  will-change: transform;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* ---------- Left content ---------- */
+
+.hero__content {
+  position: absolute;
+  left: 2%;
+  top: 13%;
+  z-index: 5;
+}
+
+.hero__title {
+  margin: 0;
+  font-size: clamp(40px, 3.7vw, 72px);
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  font-weight: 400;
+}
+
+.hero__product-name {
+  margin-top: 14px;
+  padding-left: 7px;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* ---------- Size selector ---------- */
+
+.hero__sizes {
+  position: absolute;
+  top: 16%;
+  right: 3%;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  z-index: 6;
+}
+
+.hero__size {
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 50%;
+  background: transparent;
+  color: #fff;
+  font-size: 9px;
+  transition: background 0.25s, border-color 0.25s;
+}
+
+.hero__size--active {
+  background: #85858560;
+  border-color: #858585;
+}
+
+/* ---------- Floor ellipse ---------- */
+
+.hero__floor {
+  /* intro animation in dono variables ko animate karti hai */
+  --floor-scale: 1;
+  --floor-rot: -5;
+
+  position: absolute;
+  left: 50%;
+  top: 80%;
+  width: min(73vw, 800px);
+  height: 67px;
+  transform: translate(-50%, -50%) rotate(calc(var(--floor-rot) * 1deg)) scale(var(--floor-scale));
+  z-index: 3;
+}
+
+/* ring: peeche (upar) ka hissa fade, aage (niche) ka hissa solid */
+.hero__floor::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  border-radius: 50%;
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.08) 0%, rgba(0, 0, 0, 0.25) 35%, #000 65%);
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.08) 0%, rgba(0, 0, 0, 0.25) 35%, #000 65%);
+}
+
+/* ellipse ka right corner (joote yahin se aate aur yahin jaate hain) */
+.hero__corner {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+
+/* knob: ring ka tilt aur scale cancel karta hai, isliye hamesha seedha aur same size */
+.hero__floor-center {
+  position: absolute;
+  left: 52.5%;
+  bottom: -17px;
+  width: 35px;
+  height: 35px;
+  padding: 0;
+  transform: translateX(-50%) rotate(calc(var(--floor-rot) * -1deg)) scale(calc(1 / var(--floor-scale)));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 50%;
+  background: #d5d5d5;
+  color: #202020;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+/* ---------- Bottom left ---------- */
+
+.hero__description {
+  position: absolute;
+  left: 2%;
+  bottom: 6%;
+  z-index: 6;
+}
+
+.hero__description p {
+  font-size: 10.5px;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* ---------- Bottom right ---------- */
+
+.hero__controls {
+  position: absolute;
+  right: 3%;
+  bottom: 4.5%;
+  display: flex;
+  align-items: center;
+  gap: 38px;
+  z-index: 6;
+}
+
+.hero__counter {
+  display: flex;
+  align-items: center;
+  gap: 17px;
+}
+
+.hero__counter button {
+  width: 17px;
+  height: 17px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  background: transparent;
+  color: #fff;
+  font-size: 11px;
+}
+
+.hero__counter span {
+  font-size: 14px;
+  color: #fff;
+}
+
+.hero__buy {
+  width: 113px;
+  height: 44px;
+  border: none;
+  border-radius: 999px;
+  background: #d5d5d5;
+  color: #111;
+  font-size: 15px;
+  font-weight: 500;
+  transition: transform 0.2s;
+}
+
+.hero__buy:active {
+  transform: scale(0.97);
+}

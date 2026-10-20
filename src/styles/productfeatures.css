@@ -1,0 +1,18 @@
+.productFeatures {
+  position: relative;
+
+  width: 100%;
+  min-height: 100svh;
+
+  overflow: hidden;
+
+  box-sizing: border-box;
+
+  background: #f4f1f2;
+  color: #111;
+
+  display: flex;
+
+  padding: 60px;
+  
+}

@@ -1,0 +1,43 @@
+/* ========================================
+   LOADER
+======================================== */
+
+.loader {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background: radial-gradient(
+    ellipse 55% 65% at 50% 47%,
+    #252525 0%,
+    #1c1c1c 35%,
+    #131313 68%,
+    #0d0d0d 100%
+  );
+}
+
+.loader__logo {
+  position: relative;
+   width: min(30vw, 420px);
+  z-index: 2;
+}
+
+.loader__logo img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* dim base logo */
+.loader__base {
+  opacity: 0.25;
+}
+
+/* white logo, left se right fill hoga (GSAP clip-path animate karega) */
+.loader__fill {
+  position: absolute;
+  inset: 0;
+  clip-path: inset(0 100% 0 0);
+}
